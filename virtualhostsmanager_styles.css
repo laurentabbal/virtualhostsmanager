@@ -1,0 +1,53 @@
+#vhm_module h5 {padding:2px 10px 2px 10px;margin:10px auto 10px auto;text-transform:uppercase;background-color:#EEEEEE;width:300px;text-align:center;color:#3F3F3F;font-size:18px;font-weight:bold;}
+
+#vhm_module .add_vhost_button {float:right;width:120px;text-align:center;padding:1px;margin:0px 0px 0px 0px;}
+#vhm_module .add_vhost_button a {width:100%;display:block;padding:1px 0px 1px 0px;margin:0px;color:white;background-color:#9f9f9f;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .add_vhost_button a:hover {color:white;background-color:black;}
+
+#vhm_module .vhosts {margin:10px 0px 0px 0px;padding:0px;}
+#vhm_module .vhost {clear:both;margin:0px 0px 2px 0px;padding:6px;color:gray;}
+
+#vhm_module .vhost_name_hashon {clear:both;float:left;width:180px;margin:0px;padding:0px;color:gray;font-size:110%;}
+#vhm_module .vhost_name_hashoff {clear:both;float:left;width:180px;margin:0px;padding:0px;color:black;font-size:110%;}
+#vhm_module .vhost_name_hashoff a {color:black}
+#vhm_module .vhost_name_hashoff a:hover {text-decoration:underline;}
+
+#vhm_module .vhost_path_hashon {float:left;width:400px;margin:0px;padding:0px;color:silver;margin:0px;padding:0px;}
+#vhm_module .vhost_path_hashoff {float:left;width:400px;margin:0px;padding:0px;color:gray;margin:0px;padding:0px;}
+
+#vhm_module .vhost_onoff {float:right;width:80px;text-align:center;color:#4f4f4f;background-color:#dfdfdf;padding:1px 0px 1px 0px;margin:0px 5px 0px 0px;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .vhost_onoff a {width:100%;display:block;color:#4f4f4f;}
+#vhm_module .vhost_onoff a:hover {color:white;background-color:gray;}
+
+#vhm_module .vhost_del {float:right;text-align:right;padding:0px;margin:0px;}
+#vhm_module .vhost_del a {color:#4f4f4f;background-color:#dfdfdf;padding:0px 3px 2px 3px;margin:0px;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .vhost_del a:hover {color:#4f4f4f;background-color:black;}
+
+#vhm_module .vhost_del_confirm_frame {float:right;width:130px;text-align:right;color:gray;padding:1px 0px 0px 0px;margin:0px;}
+#vhm_module .vhost_del_confirm {color:gray;text-align:center;background-color:#dfdfdf;padding:1px 8px 1px 8px;margin:0px 4px 0px 0px;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .vhost_del_confirm:hover {background-color:#8F381A;color:white;}
+
+#vhm_module .vhost_del_cancel {color:gray;text-align:center;background-color:#dfdfdf;padding:1px 8px 1px 8px;margin:0px 0px 0px 0px;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .vhost_del_cancel:hover {background-color:gray;color:white;}
+
+#vhm_module .add_vhost {clear:both;width:600px;margin:10px auto 20px auto;padding:10px 20px 10px 20px;text-align:left;background-color:#EEEEEE;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .add_vhost p {width:500px;margin:0px auto 0px auto;padding:0px;color:#895902;text-align:center;}
+#vhm_module .add_vhost a {color:white;background-color:black;margin:10px 5px 0px 0px;padding:1px 5px 1px 5px;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .add_vhost form {width:500px;margin:0px auto 0px auto;padding:0px;color:#8F381A;}
+#vhm_module .add_vhost div {margin:20px 0px 0px 0px;padding:0px;color:#8F381A;color:gray;}
+#vhm_module .add_vhost span {font-weight:bold;color:black;}
+#vhm_module .add_vhost input {margin:2px 0px 0px 10px;padding:4px 6px 4px 6px;border:0px;font-size:11px;background-color:#E3E3E3;color:#515250;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .add_vhost .submit {width:250px;text-align:center;padding:0px 0px 1px 0px;margin:10px 4px 0px 10px;border:0px;font-size:11px;color:#E4E4E4;background-color:#808080;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;cursor:pointer;}
+#vhm_module .add_vhost .warning_conf {width:420px;padding:10px 10px 10px 10px;margin:10px 0px 0px 10px;color:#895902;border:1px solid #EFCE1D;background-color:#FBD825;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .add_vhost .warning_servername {padding:0px 0px 0px 0px;margin:2px 0px 0px 10px;font-style:italic;}
+#vhm_module .add_vhost .warning_servername span {font-size:10px;font-weight:normal;color:white;font-style:normal;padding:0px 5px 0px 5px;margin:0px 0px 0px 0px;background-color:silver;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .add_vhost_cancel a {padding:1px 20px 1px 20px;margin:10px 0px 0px 0px;font-weight:normal;border:0px;font-size:11px;color:#E4E4E4;background-color:#808080;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .add_vhost_cancel a:hover {color:white;background-color:black;}
+
+#vhm_module .infobulle_warning {position:absolute;}
+#vhm_module .infobulle_warning a.info{position:relative;z-index:24;margin:0px 0px 0px 4px;padding:0px 5px 0px 5px;text-align:center;color:#895902;font-size:11px;font-weight:normal;background-color:#FBD825;text-decoration:none;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+#vhm_module .infobulle_warning a.info:hover{z-index:25;background-color:#FBD825;color:#895902;}
+#vhm_module .infobulle_warning a.info span{display:none;}
+#vhm_module .infobulle_warning a.info:hover span{display:block;position:absolute;top:-8px;left:10px;width:400px;text-align:left;padding:8px 8px 8px 15px;background-color:#FBD825;color:#895902;font-size:11px;font-weight:normal;-moz-border-radius:3px;-khtml-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+
+#vhm_module .norights {width:550px;padding:10px;text-align:center;font-weight:bold;margin:20px auto 5px auto;color:white;border:1px solid #EF5959;background-color:#ff6666;-moz-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
