@@ -15,7 +15,7 @@
 </style>
 
 <?php
-$module_version = '1.4';
+$module_version = '1.5';
 
 $module_info = array();
 $module_info = array(
@@ -29,7 +29,10 @@ $module_info = array(
 		),
 		"How to uninstall this module ?"	=>	array(
 				"If you want to uninstall this module, you just have to<br />delete the folder"	=>	"<br />[modules folder]\\virtualhostsmanager",
-		),			
+		),
+		"When you need to press reload virtual hosts ?" => array(
+				"If you change the port of apache, <br />for example port 80 to 8888 or etc."	=>	"<br />you need to press 'reload virtual hosts'",
+		),
 	),
 	"fr"	=>	array(
 		"Application"	=>	array(
@@ -39,7 +42,10 @@ $module_info = array(
 		),
 		"Comment d&eacute;sinstaller ce module ?"	=>	array(
 				"Si vous voulez d&eacute;sinstaller ce module, il suffit de supprimer le r&eacute;pertoire"	=>	"<br />[modules folder]\\virtualhostsmanager",
-		),		
+		),
+		"When you need to press reload virtual hosts ?" => array(
+				"If you change the port of apache, <br />for example port 80 to 8888 or etc."	=>	"<br />you need to press 'reload virtual hosts'",
+		),
 	),	
 );
 

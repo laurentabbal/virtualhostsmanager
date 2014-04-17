@@ -102,6 +102,62 @@ if ((isset($_GET['to'])) and ($_GET['to'] == "onoff_host")) {
 }
 //============================================================================
 
+//== RELOAD ALL VHOST FILES =======================================
+if ((isset($_GET['to'])) and ($_GET['to'] == "refresh_host")) {
+
+    // HOSTS FILE
+    $hostsfile_array = read_hostsfile('file');
+
+    $hash = ($_GET['hash'] == 'on') ? '#':'';
+    $new_hostfile_content = '';
+    foreach ($hostsfile_array as $line) {
+        if((stripos($line,"127.0.0.1") !== false) and (stripos($line,$_GET['servername']) !== false)) {
+            $new_hostfile_content .= $hash . "127.0.0.1  " . $_GET['servername'] . "\n";
+        } else {
+            $new_hostfile_content .= $line . "\n";
+        }
+    }
+
+    // Backup old hosts file
+    copy(get_hostsfile_dir() . "\hosts", get_hostsfile_dir() . "\hosts_" . date("Y-m-d@U"));
+
+    // Save new hosts file
+    file_put_contents(get_hostsfile_dir() . '\hosts', trim($new_hostfile_content));
+
+
+    //INC_VIRTUALHOST.conf
+    $vhosts_array = read_vhosts('easyphp_vhosts');
+    $new_vhosts_content = '';
+    $vhost_rows_array = array();
+    $n = 0;
+    while ($n < count($vhosts_array)) {
+        $vhost_rows_array = explode("\n", $vhosts_array[$n][0]);
+
+        foreach ($vhost_rows_array as $vhost_data) {
+            // Replace each virtualhost with new port
+            if (strstr($vhost_data, '<VirtualHost') !== FALSE)
+                $new_vhosts_content .= $new_vhost = "<VirtualHost 127.0.0.1:" . $_SERVER['SERVER_PORT'] . ">\n";
+            else
+                $new_vhosts_content .=  $vhost_data . "\n";
+        }
+        $n++;
+    }
+
+    // Backup old inc_virtual_hosts.conf
+    copy('../../data/conf/apache_virtual_hosts.conf', '../../data/conf/apache_virtual_hosts_' . date("Y-m-d@U") . '.conf');
+
+    // Save new inc_virtual_hosts.conf
+    file_put_contents('../../data/conf/apache_virtual_hosts.conf', $new_vhosts_content);
+
+    // trigger server restart
+    file_put_contents('../../binaries/conf_files/httpd.conf', file_get_contents('../../binaries/conf_files/httpd.conf'));
+
+    $redirect = "http://" . $_SERVER['HTTP_HOST'] . "/home/index.php";
+    sleep(2);
+    header("Location: " . $redirect);
+    exit;
+}
+//============================================================================
 
 //== DELETE VIRTUAL HOST AND HOST NAME =======================================
 if ((isset($_GET['to'])) and ($_GET['to'] == "del_virtualhost")) {
@@ -111,7 +167,7 @@ if ((isset($_GET['to'])) and ($_GET['to'] == "del_virtualhost")) {
 	
 	// Delete host in hosts file
 	$new_hostfile_content = '';
-	// array_unique — Removes duplicate values from an array
+	// array_unique â€” Removes duplicate values from an array
 	foreach ($hostsfile_array as $line) {
 		if((stripos($line,"127.0.0.1") === false) or (stripos($line,$vhosts_array[$_GET['num_virtualhost']][2]) === false)) {
 			$new_hostfile_content .= trim($line) . "\n";
@@ -139,7 +195,7 @@ if ((isset($_GET['to'])) and ($_GET['to'] == "del_virtualhost")) {
 	file_put_contents('../../data/conf/apache_virtual_hosts.conf', $new_vhosts_content);	
 
 	// trigger server restart
-	file_put_contents('../../binaries/conf_files/httpd.conf', file_get_contents('../../binaries/conf_files/httpd.conf')); 
+	file_put_contents('../../binaries/conf_files/httpd.conf', file_get_contents('../../binaries/conf_files/httpd.conf'));
 	
 	$redirect = "http://" . $_SERVER['HTTP_HOST'] . "/home/index.php";
 	sleep(2);
@@ -192,7 +248,7 @@ if ((isset($_POST['to'])) and ($_POST['to'] == "add_vhost_2")) {
 		$vhost_link = str_replace("//","/", $vhost_link);
 				
 		if (substr($vhost_link, -1) == "/"){$vhost_link = substr($vhost_link,0,strlen($vhost_link)-1);}
-		$new_vhost = "<VirtualHost 127.0.0.1>\n";
+		$new_vhost = "<VirtualHost 127.0.0.1:" . $_SERVER['SERVER_PORT'] . ">\n";
 		$new_vhost .= "\tDocumentRoot \"" . $vhost_link . "\"\n";
 		$new_vhost .= "\tServerName " . $_POST['vhost_name'] . "\n";
 		$new_vhost .= "\t<Directory \"" . $vhost_link . "\">\n";
@@ -217,7 +273,7 @@ if ((isset($_POST['to'])) and ($_POST['to'] == "add_vhost_2")) {
 		$hostsfile_array = read_hostsfile('file');
 		$new_hostfile_content = '';
 		$vhost_exists = false;
-		// array_unique — Removes duplicate values from an array
+		// array_unique â€” Removes duplicate values from an array
 		foreach ($hostsfile_array as $line) {
 			if (stristr($line,$_POST['vhost_name']) AND (stristr($line,"127.0.0.1"))) {
 				$new_hostfile_content = $new_hostfile_content . "\n" . "127.0.0.1  " . $_POST['vhost_name'];
