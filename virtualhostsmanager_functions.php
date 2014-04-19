@@ -6,11 +6,11 @@
  * @link     http://www.easyphp.org
  */
 
-function adapt_httpdconf() {
+function adapt_httpdconf($port) {
 	$httpdconf = @file_get_contents('../../binaries/conf_files/httpd.conf');
 	if(stripos($httpdconf,'## Virtualhost localweb') === false) {
 		$patch = "## Virtualhost localweb\n";
-		$patch .= "<VirtualHost 127.0.0.1>\n";
+		$patch .= "<VirtualHost 127.0.0.1:" . $port . ">\n";
 		$patch .= "\tDocumentRoot \"" . '${path}/data/localweb' . "\"\n";
 		$patch .= "\tServerName 127.0.0.1\n";
 		$patch .= "\t<Directory \"" . '${path}/data/localweb' . "\">\n";

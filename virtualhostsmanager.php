@@ -13,8 +13,9 @@ $module_i18n = array(
 		"activate"				=>	"activate",		
 		"desactivate"			=>	"deactivate",		
 		"delete"				=>	"Delete this Virtual Host",	
-		"add_vhost"				=>	"add a virtual host",	
-		"add_vhost_chapo"		=>	"When maintaining and developing multiple sites / applications on internet, it is helpful to have a copy of each site / application 
+		"add_vhost"				=>	"add a virtual host",
+        "refresh_vhost"			=>	"reload virtual hosts",
+        "add_vhost_chapo"		=>	"When maintaining and developing multiple sites / applications on internet, it is helpful to have a copy of each site / application
 									running on your local computer and to have them running in the same conditions (same server configuration, same path...). Virtual 
 									Hosts allow you to do that. Thus, whenever you move your projects to production environment, you don't have to change the absolute 
 									path manually and they run exactely the same way.",	
@@ -41,7 +42,8 @@ $module_i18n = array(
 		"activate"				=>	"activer",		
 		"desactivate"			=>	"d&eacute;sactiver",		
 		"delete"				=>	"Supprimer cet H&ocirc;te Virtuel",	
-		"add_vhost"				=>	"ajouter un h&ocirc;te virtuel",	
+		"add_vhost"				=>	"ajouter un h&ocirc;te virtuel",
+        "refresh_vhost"			=>	"reload virtual host",
 		"add_vhost_chapo"		=>	"Quand on maintient ou d&eacute;veloppe de plusieurs sites / applications sur Internet, il est utile d&apos;avoir une copie de chaque 
 									site / application qui fonctionne sur un ordinateur en local dans les m&ecirc;mes conditions (m&ecirc;me configuration du 
 									serveur, le m&ecirc;me chemin ...). Les H&ocirc;tes Virtuels permettent de le faire. Ainsi, une fois vos d&eacute;veloppements termin&eacute;s, lorsque vous 
@@ -69,14 +71,20 @@ $module_i18n = array(
 include_once('virtualhostsmanager_functions.php');
 ?>
 
-<div class='add_vhost_button'><a href='<?php echo $_SERVER['PHP_SELF']; ?>?to=add_vhost_1#anchor_virtualhostsmanager'><?php echo $module_i18n[$lang]['add_vhost']; ?></a></div>
+<div class='add_vhost_button'>
+    <a href='http://<?php echo $_SERVER['HTTP_HOST']; ?>/modules/virtualhostsmanager/virtualhostsmanager_update.php?to=refresh_host'><?php echo $module_i18n[$lang]['refresh_vhost']; ?></a>
+</div>
+
+<div class='add_vhost_button'>
+    <a href='<?php echo $_SERVER['PHP_SELF']; ?>?to=add_vhost_1#anchor_virtualhostsmanager'><?php echo $module_i18n[$lang]['add_vhost']; ?></a>
+</div>
 
 <?php
 clearstatcache();
 
 if (is_writable(get_hostsfile_dir() . '\hosts')) {
 
-	adapt_httpdconf();
+	adapt_httpdconf($_SERVER['SERVER_PORT']);
 
 	//== DISPLAY VIRTUALHOSTS ================================================
 
